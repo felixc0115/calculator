@@ -32,6 +32,7 @@ const subtractButton = document.querySelector('.subtract-button');
 const multiplyButton = document.querySelector('.multiply-button');
 const divideButton = document.querySelector('.divide-button');
 const equalButton = document.querySelector('.equal-button');
+const clearButton = document.querySelector('.clear-button');
 let firstNumber;
 let secondNumber;
 let selectedOperator;
@@ -44,8 +45,14 @@ addButton.addEventListener('click', function (e) {
 
 equalButton.addEventListener('click', function (e) {
     secondNumber = +display.value;
-    if(selectedOperator === '+') {
-       let result = add(firstNumber, secondNumber);
-       display.value = result;
+    if (selectedOperator === '+') {
+        let result = add(firstNumber, secondNumber);
+        display.value = result;
     }
+})
+
+clearButton.addEventListener('click', function (e) {
+    display.value = "";
+    firstNumber = 0;
+    secondNumber = 0;
 })
