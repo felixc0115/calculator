@@ -1,3 +1,4 @@
+
 function add(x, y) {
     return x + y;
 }
@@ -23,7 +24,7 @@ const display = document.querySelector('#calc-display');
 
 for (let button of numberButtons) {
     button.addEventListener('click', function () {
-        display.value += button.innerText;
+        display.innerText += button.innerText;
     })
 }
 
@@ -33,26 +34,60 @@ const multiplyButton = document.querySelector('.multiply-button');
 const divideButton = document.querySelector('.divide-button');
 const equalButton = document.querySelector('.equal-button');
 const clearButton = document.querySelector('.clear-button');
-let firstNumber;
+let currentTotal;
 let secondNumber;
 let selectedOperator;
 
 addButton.addEventListener('click', function (e) {
-    firstNumber = +display.value;
-    display.value = "";
+    currentTotal = +display.innerText;
+    display.innerText = "";
     selectedOperator = addButton.innerText;
-})
+});
+
+subtractButton.addEventListener('click', function (e) {
+    currentTotal = +display.innerText;
+    display.innerText = "";
+    selectedOperator = subtractButton.innerText;
+});
+
+multiplyButton.addEventListener('click', function (e) {
+    currentTotal = display.innerText;
+    display.innerText = "";
+    selectedOperator = multiplyButton.innerText;
+});
+
+divideButton.addEventListener('click', function (e) {
+    currentTotal = display.innerText;
+    display.innerText = "";
+    selectedOperator = divideButton.innerText;
+});
 
 equalButton.addEventListener('click', function (e) {
-    secondNumber = +display.value;
+    secondNumber = +display.innerText;
     if (selectedOperator === '+') {
-        let result = add(firstNumber, secondNumber);
-        display.value = result;
+        currentTotal = add(currentTotal, secondNumber);
+        display.innerText = currentTotal;
+        selectedOperator = '';
     }
-})
+    if (selectedOperator === '-') {
+        currentTotal = subtract(currentTotal, secondNumber);
+        display.innerText = currentTotal;
+        selectedOperator = '';
+    }
+    if (selectedOperator === '*') {
+        currentTotal = multiply(currentTotal, secondNumber)
+        display.innerText = currentTotal;
+        selectedOperator = '';
+    }
+    if (selectedOperator === '/') {
+        currentTotal = divide(currentTotal, secondNumber);
+        display.innerText = currentTotal;
+        selectedOperator = '';
+    }
+});
 
 clearButton.addEventListener('click', function (e) {
-    display.value = "";
+    display.innerText = "";
     firstNumber = 0;
     secondNumber = 0;
-})
+});

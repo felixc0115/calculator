@@ -9,7 +9,10 @@ button {
 
 #calc-display{
     width: 410px;
-    height: 100px;
+    height: 60px;
     margin-bottom: 16px;
-    font-size: 32px;
+    font-size: 48px;
+    border: 1px solid black;
+    text-align: right;
+    padding-right: 8px;
 }
