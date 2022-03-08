@@ -23,10 +23,26 @@ const numberButtons = document.querySelectorAll('.number-button');
 const display = document.querySelector('#calc-display');
 
 for (let button of numberButtons) {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function (e) {
         display.innerText += button.innerText;
     })
-}
+};
+
+document.addEventListener('keydown', function (e) {
+    console.log(e.code);
+    let keyCodeString = e.code;
+    if(e.code === 'Backspace') {
+        let numArray = display.innerText.split('');
+        numArray.pop();
+        display.innerText = +(numArray.join(''));
+    }
+    else if (e.code === 'Period') {
+        display.innerText += decimalButton.innerText;
+    }
+    else {
+        display.innerText += +keyCodeString[keyCodeString.length - 1];
+    }66.
+});
 
 const addButton = document.querySelector('.add-button');
 const subtractButton = document.querySelector('.subtract-button');
@@ -34,9 +50,16 @@ const multiplyButton = document.querySelector('.multiply-button');
 const divideButton = document.querySelector('.divide-button');
 const equalButton = document.querySelector('.equal-button');
 const clearButton = document.querySelector('.clear-button');
+const decimalButton = document.querySelector('.decimal-button');
 let currentTotal;
 let secondNumber;
 let selectedOperator;
+
+decimalButton.addEventListener('click', function (e) {
+    if (display.innerText % 1 === 0) {
+        display.innerText += decimalButton.innerText;
+    }
+});
 
 addButton.addEventListener('click', function (e) {
     currentTotal = +display.innerText;

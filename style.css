@@ -2,6 +2,25 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    background: gainsboro;
+}
+
+.calculator-container {
+    height: 650px;
+    width: 430px;
+    display: flex;
+    flex-flow: column;
+    align-items:center;
+    justify-content: center;
+    border: 8px solid black;
+    border-radius: 5%;
+}
+
 button {
     height: 100px;
     width: 100px;
@@ -15,4 +34,27 @@ button {
     border: 1px solid black;
     text-align: right;
     padding-right: 8px;
+}
+
+.number-button, .operator-button {
+    background: orangered;
+    border-radius: 10%;
+}
+
+
+.zero-button {
+    width: 204px;
+}
+
+.row-container {
+    margin-bottom: 5px;
+}
+
+.operator-button {
+    background: lightseagreen;
+}
+
+#calc-display {
+    border: 3px solid black;
+    border-radius: 5%;
 }
