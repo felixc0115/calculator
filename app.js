@@ -29,19 +29,18 @@ for (let button of numberButtons) {
 };
 
 document.addEventListener('keydown', function (e) {
-    console.log(e.code);
     let keyCodeString = e.code;
     if(e.code === 'Backspace') {
         let numArray = display.innerText.split('');
         numArray.pop();
         display.innerText = +(numArray.join(''));
     }
-    else if (e.code === 'Period') {
+    else if (display.innerText % 1 === 0) {
         display.innerText += decimalButton.innerText;
     }
     else {
         display.innerText += +keyCodeString[keyCodeString.length - 1];
-    }66.
+    }
 });
 
 const addButton = document.querySelector('.add-button');
