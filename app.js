@@ -66,23 +66,25 @@ equalButton.addEventListener('click', function (e) {
     secondNumber = +display.innerText;
     if (selectedOperator === '+') {
         currentTotal = add(currentTotal, secondNumber);
-        display.innerText = currentTotal;
-        selectedOperator = '';
+        showEqualDisplay();
     }
     if (selectedOperator === '-') {
         currentTotal = subtract(currentTotal, secondNumber);
-        display.innerText = currentTotal;
-        selectedOperator = '';
+        showEqualDisplay();
     }
     if (selectedOperator === '*') {
         currentTotal = multiply(currentTotal, secondNumber)
-        display.innerText = currentTotal;
-        selectedOperator = '';
+        showEqualDisplay();
+
     }
     if (selectedOperator === '/') {
         currentTotal = divide(currentTotal, secondNumber);
-        display.innerText = currentTotal;
-        selectedOperator = '';
+        if (secondNumber === 0) {
+            display.innerText = 'NICE TRY!!'
+        }
+        else {
+            showEqualDisplay();
+        }
     }
 });
 
@@ -91,3 +93,13 @@ clearButton.addEventListener('click', function (e) {
     firstNumber = 0;
     secondNumber = 0;
 });
+
+function showEqualDisplay() {
+    if (currentTotal % 1 === 0) {
+        display.innerText = currentTotal;
+    }
+    else {
+        display.innerText = Number.parseFloat(currentTotal).toFixed(2);
+    }
+    selectedOperator = '';
+}
